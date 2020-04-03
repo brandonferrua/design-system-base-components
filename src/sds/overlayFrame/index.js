@@ -4,14 +4,17 @@ import * as template from "../../../node_modules/elix/src/core/template.js";
 import OverlayFrame from "../../../node_modules/elix/src/base/OverlayFrame.js";
 
 /**
- * SLDS variation of an Elix [OverlayFrame](https://component.kitchen/elix/OverlayFrame).
+ * SDS variation of an Elix [OverlayFrame](https://component.kitchen/elix/OverlayFrame).
  *
- * In SLDS, this isn't offered as a standalone component, but doing so here means that
- * we can easily add the SLDS overlay style to anything with a popup.
+ * In SDS, this isn't offered as a standalone component, but doing so here means that
+ * we can easily add the SDS overlay style to anything with a popup.
  */
-export default class SldsOverlayFrame extends OverlayFrame {
+export default class SdsOverlayFrame extends OverlayFrame {
   get [internal.template]() {
     const result = super[internal.template];
+    /**
+     * Take existing slot and wrap it in HTMLElement with class
+     */
     const slot = result.content.querySelector("slot:not([name])");
     const wrapper = html`
       <div class="lwc-dropdown-container">
@@ -31,5 +34,3 @@ export default class SldsOverlayFrame extends OverlayFrame {
     return result;
   }
 }
-
-customElements.define("slds-overlay-frame", SldsOverlayFrame);
